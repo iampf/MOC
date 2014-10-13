@@ -6,13 +6,12 @@ import sys
 sys.path.append('..')
 import browser_bot
 
-def getResult(cypher):
+def getResult(cypher, b):
 	plantext = ''
 
 	url = 'http://www.stringfunction.com/md5-decrypter.html'
 
 
-	b = browser_bot.BOT()
 	data = b.decrypt(url,cypher, {'name':'string_md5'}, {'name':'submit'})
 	plantext = data.split('<textarea')[1].split('</textarea>')[0].split('">')[1]
 	if plantext == '':

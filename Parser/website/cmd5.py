@@ -6,13 +6,12 @@ import sys
 sys.path.append('..')
 import browser_bot
 
-def getResult(cypher):
+def getResult(cypher, b):
 	plantext = ''
 
 	url = 'http://www.cmd5.org/'
 
 
-	b = browser_bot.BOT()
 	data = b.decrypt(url,cypher, {'id':'ctl00_ContentPlaceHolder1_TextBoxInput'}, {'id':'ctl00_ContentPlaceHolder1_Button1'})
 	plantext = data.split('<span id="ctl00_ContentPlaceHolder1_LabelAnswer">')[1].split('"')[0].split('<')[0]
 	if 'Found.But this is a payment record. Hash-type is md5.' in plantext:

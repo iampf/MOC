@@ -6,13 +6,12 @@ import sys
 sys.path.append('..')
 import browser_bot
 
-def getResult(cypher):
+def getResult(cypher, b):
 	plantext = ''
 
 	url = 'http://md5decryption.com/'
 
 
-	b = browser_bot.BOT()
 	data = b.decrypt(url,cypher, {'name':'hash'}, {'name':'submit'})
 
 	if 'Sorry, this MD5 hash wasn\'t found in our database' in data:
