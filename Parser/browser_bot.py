@@ -1,26 +1,28 @@
 #!/usr/bin/env python2
 
 from selenium import webdriver
-
+import time
 class BOT:
 	def __init__(self):
 		self.browser = webdriver.Chrome()
 
-	def decrypt(self, url, cypher, input_text, click_btn):
+	def decrypt(self, url, cypher, input_text, click_btn, timeout=0):
 		self.browser.get(url)
 		if input_text.has_key('id'):
 			self.browser.find_element_by_id(input_text['id']).send_keys(cypher)
 		elif input_text.has_key('name'):
 			self.browser.find_element_by_name(input_text['name']).send_keys(cypher)
 
-
 		if click_btn.has_key('id'):
 			self.browser.find_element_by_id(click_btn['id']).click()
 		elif click_btn.has_key('name'):
 			self.browser.find_element_by_name(click_btn['name']).click()
+		time.sleep(timeout)
 		data = self.browser.page_source
-		self.browser.quit()
 		return data
+
+	def quit(self):
+		self.browser.quit()
 
 if __name__ == '__main__':
 	b = BOT()
