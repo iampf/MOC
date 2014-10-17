@@ -4,7 +4,7 @@
 import urllib2,urllib
 import sys
 sys.path.append('..')
-import browser_bot
+from .. import browser_bot
 
 def getResult(cypher, b):
 	plantext = ''

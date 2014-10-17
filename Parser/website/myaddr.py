@@ -4,7 +4,7 @@
 import urllib2,urllib
 import sys
 sys.path.append('..')
-import browser_bot
+from .. import browser_bot
 import time
 from selenium import webdriver
 
@@ -20,11 +20,12 @@ def getResult(cypher):
 	b.find_element_by_name('md5').submit()
 	data = b.page_source
 	if 'Hashed string</span>' not in data:
+		b.quit()
 		return None
 	else:
 		plantext = data.split('Hashed string</span>: ')[1].split('</')[0]
+		b.quit()
 		return plantext
-	b.quit()
 	'''
 	data = b.decrypt(url,cypher, {'name':'md5'}, {'no':'no'})
 	plantext =  data.split('<div id="result"')[1].split('<')[0][1:]
